@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест для підготовки до іспиту з веб-програмування</title>
+  <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background-color: black;
+      color: white;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .subheading {
+      margin-top: 15px;
+      font-size: 14px;
+      color: lightgray;
+      letter-spacing: 2px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 20px 0;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    /* Підсвітка при фокусі на полі вводу */
+    input[type="text"]:focus {
+      border: 2px solid #4CAF50;
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.6); /* Зелена підсвітка */
+      outline: none;
+    }
+
+    .start-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: black;
+      background-color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .start-button:hover {
+      background-color: #ccc;
+      transform: scale(1.1);
+    }
+
+    footer {
+      color: lightgray;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    footer a {
+      color: lightgray;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Основний контент -->
+  <main class="container">
+    <h1>Тест для підготовки до іспиту з веб-програмування</h1>
+    <div class="subheading">Введіть своє ім'я для початку тесту</div>
+    <form id="start-form">
+      <input type="text" id="name" placeholder="Ваше ім'я" required>
+      <button type="submit" class="start-button">Перейти до тесту</button>
+    </form>
+    <footer>
+      <p><a href="rules.html">Переглянути правила тесту</a></p>
+    </footer>
+  </main>
+
+  <!-- Підключення jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      if (localStorage.getItem('registered') === 'true') {
+        alert('Ви вже зареєстровані!');
+        window.location.href = 'test.html';  // Перехід до тесту після реєстрації
+      }
+
+      $('#start-form').submit(function(e) {
+        e.preventDefault();
+        const name = $('#name').val();
+        if (name) {
+          localStorage.setItem('name', name);
+          localStorage.setItem('registered', 'true');
+          window.location.href = 'test.html'; // Перехід до тесту
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
